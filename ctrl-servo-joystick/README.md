@@ -1,29 +1,29 @@
-# Control Servo with a Joystick :
+# 🕹️ Control Servo with a Joystick :
 
 ---
 
-## 1. The used Arduino board and components :
+## 🛠️ 1. The used Arduino board and components :
 
-### The used Arduino Board :
+### 🔌 The used Arduino Board :
 * Arduino UNO
 
-![The Arduino Board](./Arduino-Board.jpg)
+> ![The Arduino Board](./Arduino-Board.jpg)
 
-### The used Components :
+### ⚙️ The used Components :
 * Servo SG90 (180<sup>o</sup>)
 * Joystick
 
-![the Components](./Components.jpg)
+> ![the Components](./Components.jpg)
 
 ---
 
-## 2. Project Goal :
+## 🎯 2. Project Goal :
 
-The <mark> main GOAL </mark> of this project is to understand the way of controling any types of <mark> Servos </mark> using the <mark> Joysticks </mark>, Because that open a lot of ideas, and the famous one is to combain two servos and control the First Servo wth the X value from the joystick and the Second Servo with the Y value from the joystick and this will look like an electrical arm that we can control it using a Joystick
+> The <mark> main GOAL </mark> of this project is to understand the way of controling any types of <mark> Servos </mark> using the <mark> Joysticks </mark>, Because that open a lot of ideas, and the famous one is to combain two servos and control the First Servo wth the X value from the joystick and the Second Servo with the Y value from the joystick and this will look like an electrical arm that we can control it using a Joystick
 
 ---
 
-## 3. How to implement this Project :
+## 🚀 3. How to implement this Project :
 
 1. <mark> First </mark> you need the Arduino Board and the Components like in the Pictures also a cables.
 2. <mark> Second </mark> you need to build the circuit you can Ask IA just to handle problems (also make sure that the code is depending on the pins that you chose)
