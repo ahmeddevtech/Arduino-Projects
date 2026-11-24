@@ -39,4 +39,4 @@
 
 > ![Final Circuit](./imgs/final-circuit.jpg)
 
-🎥 **[Watch the Result Video](./final-result.mp4)**
+🎥 **[Watch the Result Video](./imgs/final-result.mp4)**
