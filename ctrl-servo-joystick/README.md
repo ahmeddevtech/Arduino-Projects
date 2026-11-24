@@ -1,32 +1,42 @@
-# 🕹️ Control Servo with a Joystick :
+# ⚡ Control 8 LEDs with an 8-Bit Shift Register (SN74HC595N)
 
 ---
 
-## 🛠️ 1. The used Arduino board and components :
+## 🧩 1. The Used Arduino Board and Components
 
-### 🔌 The used Arduino Board :
+### 🖥️ The Used Arduino Board
 
-- Arduino UNO
+- Arduino UNO R3
 
 > ![The Arduino Board](./imgs/Arduino-Board.jpg)
 
-### ⚙️ The used Components :
+### 📦 The Used Components
 
-- Servo SG90 (180<sup>o</sup>)
-- Joystick
+- Arduino UNO R3 board
+- `SN74HC595N` 8-bit shift register chip
+- Breadboard
+- 8x LEDs (any colors)
+- 8x resistors (`220 Ω` or `330 Ω`)
+- Jumper wires
 
-> ![the Components](./imgs/Components.jpg)
-
----
-
-## 🎯 2. Project Goal :
-
-> The <mark> main GOAL </mark> of this project is to understand the way of controling any types of <mark> Servos </mark> using the <mark> Joysticks </mark>, Because that open a lot of ideas, and the famous one is to combain two servos and control the First Servo wth the X value from the joystick and the Second Servo with the Y value from the joystick and this will look like an electrical arm that we can control it using a Joystick
+> ![The Components](./imgs/components.jpg)
 
 ---
 
-## 🚀 3. How to implement this Project :
+## 🎯 2. Project Goal
 
-1. <mark> First </mark> you need the Arduino Board and the Components like in the Pictures also a cables.
-2. <mark> Second </mark> you need to build the circuit you can Ask IA just to handle problems (also make sure that the code is depending on the pins that you chose)
-3. <mark> Thirdly </mark> implement the code or you can just download the sketch [ctrl-servo-joystick.ino](./ctrl-servo-joystick.ino) that i have in this project folder, place the skitch in the [Arduino IDE](https://www.arduino.cc/en/software/), adapte the USB that you use for the Arduino Board and press UPLOAD in the IDE and <mark> Congratulations </mark> try the Project and have fun with it.
+> The goal of this project is to control eight LEDs using only three Arduino pins (`Data`, `Clock`, and `Latch`) through the `SN74HC595N` shift register. Mastering serial-to-parallel shifting opens up many ideas, such as controlling anything <mark>not just LEDs</mark> like relays, buzzers, seven-segment displays, or larger output arrays without using up all digital pins.
+
+---
+
+## 🛠️ 3. How to Build the Circuit and Implement the Code
+
+> Place the `SN74HC595N` across the center gap of the breadboard with Pin 1 aligned to your reference mark, then wire power and control lines cleanly: connect Pin 16 (`VCC`) and Pin 10 (`MR`) to `5V`, Pin 8 (`GND`) and Pin 13 (`OE`) to `GND`, Pin 14 (`DS`) to `dataPin`, Pin 11 (`SHCP`) to `clockPin`, and Pin 12 (`STCP`) to `latchPin`. Next, connect outputs `Q0`–`Q7` (Pins 15 and 1–7) to the anode (long leg) of each LED, and route each LED's cathode (short leg) through a `220 Ω` or `330 Ω` resistor to `GND`. Finally, open your sketch in the [Arduino IDE](https://www.arduino.cc/en/software/), set the three control pins as `OUTPUT`, send an 8-bit byte via `shiftOut()` (`MSBFIRST` or `LSBFIRST`) between `LOW` and `HIGH` pulses on `latchPin`, pick the matching COM port, and click **Upload**.
+
+---
+
+## 🎬 4. Final Circuit and Result Video
+
+> ![Final Circuit](./imgs/final-circuit.jpg)
+
+🎥 **[Watch the Result Video](./final-result.mp4)**
