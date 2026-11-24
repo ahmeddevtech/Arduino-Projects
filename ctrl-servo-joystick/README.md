@@ -5,15 +5,17 @@
 ## 🛠️ 1. The used Arduino board and components :
 
 ### 🔌 The used Arduino Board :
-* Arduino UNO
 
-> ![The Arduino Board](./Arduino-Board.jpg)
+- Arduino UNO
+
+> ![The Arduino Board](./imgs/Arduino-Board.jpg)
 
 ### ⚙️ The used Components :
-* Servo SG90 (180<sup>o</sup>)
-* Joystick
 
-> ![the Components](./Components.jpg)
+- Servo SG90 (180<sup>o</sup>)
+- Joystick
+
+> ![the Components](./imgs/Components.jpg)
 
 ---
 
