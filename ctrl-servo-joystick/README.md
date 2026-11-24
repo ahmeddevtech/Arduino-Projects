@@ -6,7 +6,7 @@
 
 ### 🔌 The used Arduino Board :
 
-- Arduino UNO
+- Arduino UNO R3
 
 > ![The Arduino Board](./imgs/Arduino-Board.jpg)
 
