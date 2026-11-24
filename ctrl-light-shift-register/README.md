@@ -18,6 +18,7 @@
 - 8x LEDs (any colors)
 - 8x resistors (`220 Ω` or `330 Ω`)
 - Jumper wires
+- USB cable
 
 > ![The Components](./imgs/components.jpg)
 
@@ -25,18 +26,61 @@
 
 ## 🎯 2. Project Goal
 
-> The goal of this project is to control eight LEDs using only three Arduino pins (`Data`, `Clock`, and `Latch`) through the `SN74HC595N` shift register. Mastering serial-to-parallel shifting opens up many ideas, such as controlling anything <mark>not just LEDs</mark> like relays, buzzers, seven-segment displays, or larger output arrays without using up all digital pins.
+> The goal of this project is to control eight LEDs using only three Arduino pins (`Data`, `Clock`, and `Latch`) through the `SN74HC595N` shift register. The project demonstrates different LED patterns, including a normal shift, a circular shift, and a back-and-forth shift.
 
 ---
 
 ## 🛠️ 3. How to Build the Circuit and Implement the Code
 
-> Place the `SN74HC595N` across the center gap of the breadboard with Pin 1 aligned to your reference mark, then wire power and control lines cleanly: connect Pin 16 (`VCC`) and Pin 10 (`MR`) to `5V`, Pin 8 (`GND`) and Pin 13 (`OE`) to `GND`, Pin 14 (`DS`) to `dataPin`, Pin 11 (`SHCP`) to `clockPin`, and Pin 12 (`STCP`) to `latchPin`. Next, connect outputs `Q0`–`Q7` (Pins 15 and 1–7) to the anode (long leg) of each LED, and route each LED's cathode (short leg) through a `220 Ω` or `330 Ω` resistor to `GND`. Finally, open your sketch in the [Arduino IDE](https://www.arduino.cc/en/software/), set the three control pins as `OUTPUT`, send an 8-bit byte via `shiftOut()` (`MSBFIRST` or `LSBFIRST`) between `LOW` and `HIGH` pulses on `latchPin`, pick the matching COM port, and click **Upload**.
+### 🔌 A. Build the Circuit
+
+Place the `SN74HC595N` across the center gap of the breadboard, making sure its notch or Pin 1 marker is oriented correctly. Connect the power and control pins as follows:
+
+| SN74HC595N pin | Pin name | Connect to |
+|---:|---|---|
+| 16 | VCC | Arduino `5V` |
+| 8 | GND | Arduino `GND` |
+| 10 | MR / SRCLR | Arduino `5V` |
+| 13 | OE | Arduino `GND` |
+| 14 | DS / SER | Arduino data pin (`dataPin`) |
+| 11 | SHCP / SRCLK | Arduino clock pin (`clockPin`) |
+| 12 | STCP / RCLK | Arduino latch pin (`latchPin`) |
+
+Connect the eight shift-register outputs to the LEDs. For each LED, connect the output to its anode (long leg), then connect its cathode (short leg) to `GND` through its own `220 Ω` or `330 Ω` resistor.
+
+| LED | Shift-register output | Chip pin |
+|---|---|---:|
+| LED 0 | Q0 | 15 |
+| LED 1 | Q1 | 1 |
+| LED 2 | Q2 | 2 |
+| LED 3 | Q3 | 3 |
+| LED 4 | Q4 | 4 |
+| LED 5 | Q5 | 5 |
+| LED 6 | Q6 | 6 |
+| LED 7 | Q7 | 7 |
+
+> **Note:** Use one resistor for each LED. Do not connect LEDs directly to the shift-register outputs.
+
+### 💻 B. Implement the Code
+
+Open the required Arduino sketch in the [Arduino IDE](https://www.arduino.cc/en/software/). Make sure the `dataPin`, `clockPin`, and `latchPin` values in the code match your wiring. Set these pins as `OUTPUT`, select **Arduino UNO** under **Tools → Board**, choose the correct port under **Tools → Port**, then click **Upload**.
+
+The examples below use `shiftOut()` to send an 8-bit pattern to the register. The latch pin updates the eight LED outputs after the bits have been sent.
+
+### ➡️ C. Shift
+
+In the shift pattern, one LED is turned on at a time and moves to the next position. When the bit moves from one position to another, the previous LED turns off. This creates a simple running-light effect across the eight LEDs.
+
+### 🔄 D. Circular Shift
+
+In the circular shift pattern, the lit LED moves through the eight positions and returns to the first LED after reaching the last one. The bit leaving one end is placed back at the other end, so the pattern repeats continuously without restarting from an empty state.
+
+### ↔️ E. Back-and-Forth Shift
+
+In the back-and-forth pattern, one lit LED moves from the first LED to the last LED, then reverses direction and travels back to the first. This creates a bouncing-light effect.
+
+### 🧩 F. Other LED Patterns
+
+You can also send different 8-bit values to display other patterns, such as turning all LEDs on or off, lighting alternate LEDs, or displaying a binary counting sequence. The pattern depends on the byte sent to the shift register and the selected bit order (`MSBFIRST` or `LSBFIRST`).
 
 ---
-
-## 🎬 4. Final Circuit and Result Video
-
-> ![Final Circuit](./imgs/final-circuit.jpg)
-
-🎥 **[Watch the Result Video](./imgs/final-result.mp4)**
