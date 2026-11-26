@@ -36,28 +36,28 @@
 
 Place the `SN74HC595N` across the center gap of the breadboard, making sure its notch or Pin 1 marker is oriented correctly. Connect the power and control pins as follows:
 
-| SN74HC595N pin | Pin name | Connect to |
-|---:|---|---|
-| 16 | VCC | Arduino `5V` |
-| 8 | GND | Arduino `GND` |
-| 10 | MR / SRCLR | Arduino `5V` |
-| 13 | OE | Arduino `GND` |
-| 14 | DS / SER | Arduino data pin (`dataPin`) |
-| 11 | SHCP / SRCLK | Arduino clock pin (`clockPin`) |
-| 12 | STCP / RCLK | Arduino latch pin (`latchPin`) |
+| SN74HC595N pin | Pin name     | Connect to                     |
+| -------------: | ------------ | ------------------------------ |
+|             16 | VCC          | Arduino `5V`                   |
+|              8 | GND          | Arduino `GND`                  |
+|             10 | MR / SRCLR   | Arduino `5V`                   |
+|             13 | OE           | Arduino `GND`                  |
+|             14 | DS / SER     | Arduino data pin (`dataPin`)   |
+|             11 | SHCP / SRCLK | Arduino clock pin (`clockPin`) |
+|             12 | STCP / RCLK  | Arduino latch pin (`latchPin`) |
 
 Connect the eight shift-register outputs to the LEDs. For each LED, connect the output to its anode (long leg), then connect its cathode (short leg) to `GND` through its own `220 Ω` or `330 Ω` resistor.
 
-| LED | Shift-register output | Chip pin |
-|---|---|---:|
-| LED 0 | Q0 | 15 |
-| LED 1 | Q1 | 1 |
-| LED 2 | Q2 | 2 |
-| LED 3 | Q3 | 3 |
-| LED 4 | Q4 | 4 |
-| LED 5 | Q5 | 5 |
-| LED 6 | Q6 | 6 |
-| LED 7 | Q7 | 7 |
+| LED   | Shift-register output | Chip pin |
+| ----- | --------------------- | -------: |
+| LED 0 | Q0                    |       15 |
+| LED 1 | Q1                    |        1 |
+| LED 2 | Q2                    |        2 |
+| LED 3 | Q3                    |        3 |
+| LED 4 | Q4                    |        4 |
+| LED 5 | Q5                    |        5 |
+| LED 6 | Q6                    |        6 |
+| LED 7 | Q7                    |        7 |
 
 > **Note:** Use one resistor for each LED. Do not connect LEDs directly to the shift-register outputs.
 
@@ -82,5 +82,9 @@ In the back-and-forth pattern, one lit LED moves from the first LED to the last 
 ### 🧩 F. Other LED Patterns
 
 You can also send different 8-bit values to display other patterns, such as turning all LEDs on or off, lighting alternate LEDs, or displaying a binary counting sequence. The pattern depends on the byte sent to the shift register and the selected bit order (`MSBFIRST` or `LSBFIRST`).
+
+### 🔀 G. Binary Flipper
+
+In the binary flipper pattern, the current 8-bit state of the LEDs is inverted so every lit LED turns off and every unlit LED turns on. Sending the flipped byte through the shift register toggles the binary pattern cleanly between `0` and `1` across all eight outputs.
 
 ---
